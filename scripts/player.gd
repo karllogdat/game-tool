@@ -4,11 +4,29 @@ extends CharacterBody2D
 @export var SPEED = 300.0
 
 var last_direction: Vector2 = Vector2.DOWN
+var is_attacking: bool = false
+var hitbox_offset: Vector2
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var swing_sword: AudioStreamPlayer2D = $SwingSword
+@onready var hitbox: Area2D = $Hitbox
+
+
+func _ready() -> void:
+	# initialize hitbox offset 
+	hitbox_offset = hitbox.position
 
 
 func _physics_process(_delta: float) -> void:
+
+	if Input.is_action_just_pressed("attack") and not is_attacking:
+		attack()
+
+	# skip movement if attacking
+	if is_attacking:
+		velocity = Vector2.ZERO
+		return
+
 	process_movement()
 	process_animation()
 	move_and_slide()
@@ -20,11 +38,15 @@ func process_movement() -> void:
 	if direction != Vector2.ZERO:
 		velocity = direction * SPEED
 		last_direction = direction
+		update_hitbox_offset()
 	else:
 		velocity = Vector2.ZERO
 
 
 func process_animation() -> void:
+	if is_attacking:
+		return
+
 	if velocity != Vector2.ZERO:
 		play_animation("run", last_direction)
 	else:
@@ -40,3 +62,27 @@ func play_animation(prefix:String, dir: Vector2) -> void:
 		animated_sprite_2d.play(prefix + "_up")
 	elif dir.y > 0:
 		animated_sprite_2d.play(prefix + "_down")
+
+# ----- ATTACK -----
+func attack() -> void:
+	is_attacking = true
+	swing_sword.play()
+	play_animation("attack", last_direction)
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	is_attacking = false
+
+# ----- HITBOX -----
+func update_hitbox_offset() -> void:
+	var x := hitbox_offset.x
+	var y := hitbox_offset.y 
+
+	match last_direction:
+		Vector2.UP:
+			hitbox.position = Vector2(x, y)
+		Vector2.DOWN:
+			hitbox.position = Vector2(x, -y)
+		Vector2.LEFT:
+			hitbox.position = Vector2(y, -x)
+		Vector2.RIGHT:
+			hitbox.position = Vector2(-y, x)
