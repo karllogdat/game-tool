@@ -91,7 +91,7 @@ script = ExtResource("1_txkty")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2137876291]
 sprite_frames = SubResource("SpriteFrames_guxa7")
-animation = &"die"
+animation = &"idle"
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1530226071]
 position = Vector2(0.5, 1)
