@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ceyqumrm4mtx3"]
 
 [ext_resource type="Texture2D" uid="uid://dhav6di64epa1" path="res://assets/images/skeleton/SpriteSheet.png" id="1_pbvs3"]
+[ext_resource type="Script" uid="uid://cbl7qdyrip2p2" path="res://scripts/skeleton.gd" id="1_txkty"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_txkty"]
 atlas = ExtResource("1_pbvs3")
@@ -65,8 +66,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_guxa7"]
 size = Vector2(13, 14)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_guxa7"]
+radius = 100.0
+
 [node name="Skeleton" type="CharacterBody2D" unique_id=51023916]
 scale = Vector2(4, 4)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_txkty")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2137876291]
 sprite_frames = SubResource("SpriteFrames_guxa7")
@@ -75,3 +82,11 @@ animation = &"idle"
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1530226071]
 position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_guxa7")
+
+[node name="Sight" type="Area2D" parent="." unique_id=1638295965]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sight" unique_id=450179000]
+shape = SubResource("CircleShape2D_guxa7")
+
+[connection signal="body_entered" from="Sight" to="." method="_on_sight_body_entered"]
+[connection signal="body_exited" from="Sight" to="." method="_on_sight_body_exited"]

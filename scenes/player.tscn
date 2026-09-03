@@ -247,6 +247,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wiiu7"]
+size = Vector2(12.25, 10)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_guxa7"]
 size = Vector2(15, 15)
 
@@ -256,7 +259,11 @@ script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2024458180]
 sprite_frames = SubResource("SpriteFrames_guxa7")
-animation = &"attack_up"
+animation = &"idle_down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1317960811]
+position = Vector2(-0.125, 1.75)
+shape = SubResource("RectangleShape2D_wiiu7")
 
 [node name="SwingSword" type="AudioStreamPlayer2D" parent="." unique_id=765573877]
 stream = ExtResource("3_qhqgy")
