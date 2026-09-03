@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 @export var SPEED = 300.0
 
+var damage: int = 30
+
 var last_direction: Vector2 = Vector2.DOWN
 var is_attacking: bool = false
 var hitbox_offset: Vector2
@@ -90,6 +92,8 @@ func update_hitbox_offset() -> void:
 		Vector2.RIGHT:
 			hitbox.position = Vector2(-y, x)
 
+# attack 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if is_attacking and body.name.begins_with("Skeleton"):
-		print("Enemy hit: " + body.name)
+		body.take_damage(damage, position)
+		print("Enemy hit: " + body.name + " for " + str(damage))
