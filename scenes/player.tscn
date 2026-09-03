@@ -276,5 +276,11 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=754941654]
 shape = SubResource("RectangleShape2D_guxa7")
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2128799621]
+limit_left = 0
+limit_top = 0
+limit_right = 1792
+limit_bottom = 1152
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
