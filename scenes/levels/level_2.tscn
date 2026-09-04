@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://b5mwv04y1c06r"]
 
 [ext_resource type="PackedScene" uid="uid://c3hiegl0gdyr7" path="res://scenes/levels/base_level.tscn" id="1_j2425"]
+[ext_resource type="PackedScene" uid="uid://ceyqumrm4mtx3" path="res://scenes/skeleton.tscn" id="2_g2h2n"]
 
 [node name="LevelRoot" unique_id=1007234821 instance=ExtResource("1_j2425")]
 
@@ -12,3 +13,12 @@ tile_map_data = PackedByteArray("AAACAAsAAAANAA0AAAALAAcAAAAMAA4AAAALAAgAAAAMAA8
 
 [node name="Player" parent="." index="2" unique_id=1931768791]
 position = Vector2(53, 624)
+
+[node name="Skeleton2" parent="Enemies" parent_id_path=PackedInt32Array(1245322202) index="1" unique_id=51023916 instance=ExtResource("2_g2h2n")]
+position = Vector2(573, 325)
+
+[node name="Skeleton3" parent="Enemies" parent_id_path=PackedInt32Array(1245322202) index="2" unique_id=2044244299 instance=ExtResource("2_g2h2n")]
+position = Vector2(613, 671)
+
+[node name="Skeleton4" parent="Enemies" parent_id_path=PackedInt32Array(1245322202) index="3" unique_id=1026273093 instance=ExtResource("2_g2h2n")]
+position = Vector2(941, 591)

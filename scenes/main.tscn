@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bdwrrbhexlhmu" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://c3hiegl0gdyr7" path="res://scenes/levels/base_level.tscn" id="1_sugp2"]
+[ext_resource type="PackedScene" uid="uid://dpiqb36n6ros" path="res://scenes/hud.tscn" id="3_sugp2"]
 
 [node name="Main" type="Node2D" unique_id=1270676271]
 script = ExtResource("1_0wfyh")
 
 [node name="LevelRoot" parent="." unique_id=1007234821 instance=ExtResource("1_sugp2")]
+
+[node name="HUD" parent="." unique_id=760689786 instance=ExtResource("3_sugp2")]
