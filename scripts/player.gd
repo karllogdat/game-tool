@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+signal health_changed(new_health: int)
 signal died
 
 @export var SPEED = 300.0
@@ -100,6 +101,7 @@ func take_damage(damage: int) -> void:
 	
 	current_health -= damage
 	PlayerStats.current_health = current_health
+	emit_signal("health_changed", current_health)
 
 	take_damage_sfx.play()
 
@@ -108,8 +110,6 @@ func take_damage(damage: int) -> void:
 
 	# invincibility cooldown
 	damage_cooldown.start()
-
-	print("Player health: %s" % current_health)
 
 func die() -> void:
 	animated_sprite_2d.play("die")

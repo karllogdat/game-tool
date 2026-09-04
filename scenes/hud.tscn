@@ -1,9 +1,40 @@
 [gd_scene format=3 uid="uid://dpiqb36n6ros"]
 
 [ext_resource type="Script" uid="uid://de0x4l60aeanx" path="res://scripts/hud.gd" id="1_ahhtf"]
+[ext_resource type="Texture2D" uid="uid://dy8fsebj45f4x" path="res://assets/images/UI/Heart_Full.png" id="2_oo0fn"]
 
 [node name="HUD" type="CanvasLayer" unique_id=760689786]
 script = ExtResource("1_ahhtf")
+
+[node name="Hearts" type="HBoxContainer" parent="." unique_id=1928185819]
+offset_right = 96.0
+offset_bottom = 16.0
+scale = Vector2(4, 4)
+
+[node name="Heart1" type="TextureRect" parent="Hearts" unique_id=1136124966]
+layout_mode = 2
+texture = ExtResource("2_oo0fn")
+stretch_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="Hearts" unique_id=756555734]
+layout_mode = 2
+texture = ExtResource("2_oo0fn")
+stretch_mode = 2
+
+[node name="Heart3" type="TextureRect" parent="Hearts" unique_id=1425348553]
+layout_mode = 2
+texture = ExtResource("2_oo0fn")
+stretch_mode = 2
+
+[node name="Heart4" type="TextureRect" parent="Hearts" unique_id=1337096327]
+layout_mode = 2
+texture = ExtResource("2_oo0fn")
+stretch_mode = 2
+
+[node name="Heart5" type="TextureRect" parent="Hearts" unique_id=861379461]
+layout_mode = 2
+texture = ExtResource("2_oo0fn")
+stretch_mode = 2
 
 [node name="FadeOverlay" type="ColorRect" parent="." unique_id=1444715708]
 modulate = Color(1, 1, 1, 0)
